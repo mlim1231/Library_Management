@@ -25,11 +25,11 @@ class MemberController {
     return await db.update(
       'members',
       {
-        'name': name, // Perbarui nama anggota
-        'email': email, // Perbarui email anggota
-        'phone': phone, // Perbarui nomor telepon anggota
+        'name': name, 
+        'email': email, 
+        'phone': phone, 
       },
-      where: 'id = ?', // Kondisi: berdasarkan ID anggota
+      where: 'id = ?', 
       whereArgs: [id],
     );
   }
@@ -39,7 +39,7 @@ class MemberController {
     final db = await DBHelper.initDB(); // Inisialisasi database
     return await db.delete(
       'members',
-      where: 'id = ?', // Kondisi: berdasarkan ID anggota
+      where: 'id = ?', 
       whereArgs: [id],
     );
   }

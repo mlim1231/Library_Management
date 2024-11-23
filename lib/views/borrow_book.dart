@@ -28,7 +28,7 @@ class _BorrowBookState extends State<BorrowBook> {
     final books = await _bookController.getBooks(); // Mengambil semua data buku
     final members = await _memberController.getMembers(); // Mengambil semua data anggota
     setState(() {
-      // Filter buku yang belum dipinjam (member_id == null)
+      // Filter buku yang belum dipinjam 
       _books = books.where((book) => book['member_id'] == null).toList();
       _members = members;
     });
@@ -39,7 +39,7 @@ class _BorrowBookState extends State<BorrowBook> {
     // Validasi: Pastikan buku dan anggota sudah dipilih
     if (_selectedBookId == null || _selectedMemberId == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please select both a book and a member!')), // Tampilkan pesan kesalahan
+        SnackBar(content: Text('Please select both a book and a member!')), 
       );
       return;
     }
@@ -65,9 +65,9 @@ class _BorrowBookState extends State<BorrowBook> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Borrow Book')), // Judul AppBar
+      appBar: AppBar(title: Text('Borrow Book')), 
       body: Padding(
-        padding: const EdgeInsets.all(16.0), // Padding untuk keseluruhan halaman
+        padding: const EdgeInsets.all(16.0), 
         child: Column(
           children: [
             // Dropdown untuk memilih buku
@@ -82,11 +82,11 @@ class _BorrowBookState extends State<BorrowBook> {
               }).toList(),
               onChanged: (value) {
                 setState(() {
-                  _selectedBookId = value; // Update ID buku yang dipilih
+                  _selectedBookId = value; 
                 });
               },
             ),
-            SizedBox(height: 10), // Spasi antar widget
+            SizedBox(height: 10), 
 
             // Dropdown untuk memilih anggota
             DropdownButton<int>(
@@ -100,16 +100,16 @@ class _BorrowBookState extends State<BorrowBook> {
               }).toList(),
               onChanged: (value) {
                 setState(() {
-                  _selectedMemberId = value; // Update ID anggota yang dipilih
+                  _selectedMemberId = value; 
                 });
               },
             ),
-            SizedBox(height: 20), // Spasi antar widget
+            SizedBox(height: 20), 
 
             // Tombol untuk meminjam buku
             ElevatedButton(
-              onPressed: _borrowBook, // Fungsi yang dipanggil saat tombol ditekan
-              child: Text('Borrow Book'), // Teks pada tombol
+              onPressed: _borrowBook, 
+              child: Text('Borrow Book'), 
             ),
           ],
         ),

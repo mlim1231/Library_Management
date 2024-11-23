@@ -26,12 +26,12 @@ class BooksByCategory extends StatelessWidget {
         // Mengambil data buku berdasarkan kategori
         future: BookCategoryController().getBooksForCategory(categoryId),
         builder: (context, snapshot) {
-          // Menampilkan indikator loading saat data sedang dimuat
+          
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
 
-          // Menangani error jika terjadi kesalahan saat memuat data
+          // Menangani error jika terjadi kesalahan saat load data
           if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           }
@@ -51,8 +51,8 @@ class BooksByCategory extends StatelessWidget {
               return Card(
                 margin: EdgeInsets.symmetric(vertical: 5), // Margin antar kartu
                 child: ListTile(
-                  title: Text(book['title']), // Judul buku
-                  subtitle: Text('Author: ${book['author']}'), // Penulis buku
+                  title: Text(book['title']), 
+                  subtitle: Text('Author: ${book['author']}'), 
                 ),
               );
             },

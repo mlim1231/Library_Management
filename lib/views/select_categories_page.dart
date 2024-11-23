@@ -38,7 +38,7 @@ class _SelectCategoriesPageState extends State<SelectCategoriesPage> {
   @override
   void initState() {
     super.initState();
-    _fetchCategories(); // Memuat daftar kategori
+    _fetchCategories(); // load daftar kategori
   }
 
   // Tampilan utama halaman
@@ -46,14 +46,14 @@ class _SelectCategoriesPageState extends State<SelectCategoriesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select Categories'), // Judul halaman
+        title: Text('Select Categories'), 
         actions: [
           // Tombol untuk menyimpan kategori yang dipilih
           TextButton(
             onPressed: () {
-              Navigator.pop(context, _localSelectedCategories); // Kembalikan hasil pilihan
+              Navigator.pop(context, _localSelectedCategories); 
             },
-            child: Text('Save', style: TextStyle(color: Colors.black)), // Tombol "Save"
+            child: Text('Save', style: TextStyle(color: Colors.black)), 
           ),
         ],
       ),
@@ -63,11 +63,11 @@ class _SelectCategoriesPageState extends State<SelectCategoriesPage> {
         itemBuilder: (context, index) {
           final category = _categories[index]; // Data kategori berdasarkan indeks
           return CheckboxListTile(
-            title: Text(category['name']), // Nama kategori
+            title: Text(category['name']), 
             value: _localSelectedCategories[category['id']], // Status kategori dipilih/tidak
             onChanged: (value) {
               setState(() {
-                _localSelectedCategories[category['id']] = value ?? false; // Perbarui status lokal
+                _localSelectedCategories[category['id']] = value ?? false; // Perbarui status 
               });
             },
           );

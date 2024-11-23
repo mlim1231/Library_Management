@@ -65,11 +65,11 @@ class _CategoryListState extends State<CategoryList> {
     final confirmed = await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Delete Category'), // Judul dialog
-        content: Text('Are you sure you want to delete this category?'), // Pesan dialog
+        title: Text('Delete Category'), 
+        content: Text('Are you sure you want to delete this category?'), 
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: Text('Cancel')), // Tombol batal
-          TextButton(onPressed: () => Navigator.pop(context, true), child: Text('Delete')), // Tombol hapus
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text('Cancel')), 
+          TextButton(onPressed: () => Navigator.pop(context, true), child: Text('Delete')), 
         ],
       ),
     );
@@ -78,7 +78,7 @@ class _CategoryListState extends State<CategoryList> {
       // Jika dikonfirmasi, hapus kategori dari database
       await _categoryController.deleteCategory(id);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Category deleted successfully!')), // Pesan sukses
+        SnackBar(content: Text('Category deleted successfully!')), 
       );
       _fetchCategories(); // Refresh daftar kategori
     }
@@ -90,20 +90,20 @@ class _CategoryListState extends State<CategoryList> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Books in $categoryName'), // Judul dialog
+        title: Text('Books in $categoryName'), 
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: books.map((book) {
             return ListTile(
-              title: Text(book['title']), // Judul buku
-              subtitle: Text('Author: ${book['author']}'), // Penulis buku
+              title: Text(book['title']), 
+              subtitle: Text('Author: ${book['author']}'), 
             );
           }).toList(),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Close'), // Tombol untuk menutup dialog
+            child: Text('Close'), 
           ),
         ],
       ),
@@ -114,7 +114,7 @@ class _CategoryListState extends State<CategoryList> {
   @override
   void initState() {
     super.initState();
-    _fetchCategories(); // Memuat daftar kategori
+    _fetchCategories(); // load daftar kategori
   }
 
   // Membangun UI halaman
@@ -123,7 +123,7 @@ class _CategoryListState extends State<CategoryList> {
     return Scaffold(
       appBar: AppBar(title: Text('Manage Categories')), // Judul AppBar
       body: Padding(
-        padding: const EdgeInsets.all(16.0), // Padding untuk keseluruhan halaman
+        padding: const EdgeInsets.all(16.0), 
         child: Column(
           children: [
             // Input untuk nama kategori
@@ -131,14 +131,14 @@ class _CategoryListState extends State<CategoryList> {
               controller: _nameController,
               decoration: InputDecoration(labelText: 'Category Name'), // Placeholder untuk input
             ),
-            SizedBox(height: 10), // Spasi antar widget
+            SizedBox(height: 10), 
 
             // Tombol untuk menyimpan kategori
             ElevatedButton(
               onPressed: _saveCategory, // Fungsi yang dipanggil saat tombol ditekan
-              child: Text(_editingCategoryId == null ? 'Add Category' : 'Update Category'), // Teks pada tombol
+              child: Text(_editingCategoryId == null ? 'Add Category' : 'Update Category'), 
             ),
-            SizedBox(height: 20), // Spasi antar widget
+            SizedBox(height: 20), 
 
             // Daftar kategori
             Expanded(
@@ -147,9 +147,9 @@ class _CategoryListState extends State<CategoryList> {
                 itemBuilder: (context, index) {
                   final category = _categories[index];
                   return Card(
-                    margin: EdgeInsets.symmetric(vertical: 5), // Margin antar kartu
+                    margin: EdgeInsets.symmetric(vertical: 5), 
                     child: ListTile(
-                      title: Text(category['name']), // Nama kategori
+                      title: Text(category['name']), 
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [

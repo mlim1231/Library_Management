@@ -19,7 +19,7 @@ class _MemberListState extends State<MemberList> {
 
   // List untuk menyimpan data anggota yang diambil dari database
   List<Map<String, dynamic>> _members = [];
-  int? _editingMemberId; // ID anggota yang sedang di-edit (null jika tidak ada)
+  int? _editingMemberId; // ID anggota yang sedang di-edit
 
   // Fungsi untuk mengambil data anggota dari database
   void _fetchMembers() async {
@@ -34,7 +34,7 @@ class _MemberListState extends State<MemberList> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Member Details'), // Judul dialog
+        title: Text('Member Details'), 
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +46,7 @@ class _MemberListState extends State<MemberList> {
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context), // Menutup dialog
+            onPressed: () => Navigator.pop(context),
             child: Text('Close'),
           ),
         ],
@@ -117,8 +117,8 @@ class _MemberListState extends State<MemberList> {
     final confirmed = await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Delete Member'), // Judul dialog
-        content: Text('Are you sure you want to delete this member?'), // Pesan konfirmasi
+        title: Text('Delete Member'), 
+        content: Text('Are you sure you want to delete this member?'), 
         actions: [
           TextButton(onPressed: () => Navigator.pop(context, false), child: Text('Cancel')),
           TextButton(onPressed: () => Navigator.pop(context, true), child: Text('Delete')),
@@ -155,7 +155,7 @@ class _MemberListState extends State<MemberList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Manage Members')), // Judul halaman
+      appBar: AppBar(title: Text('Manage Members')), 
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -197,7 +197,7 @@ class _MemberListState extends State<MemberList> {
                   return Card(
                     margin: EdgeInsets.symmetric(vertical: 5),
                     child: ListTile(
-                      title: Text(member['name']), // Menampilkan nama anggota
+                      title: Text(member['name']), 
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [

@@ -35,7 +35,7 @@ class _SelectCategoryPageState extends State<SelectCategoryPage> {
   @override
   void initState() {
     super.initState();
-    _fetchCategories(); // Memuat daftar kategori
+    _fetchCategories(); // load daftar kategori
   }
 
   // Fungsi untuk membangun antarmuka halaman

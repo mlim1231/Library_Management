@@ -74,7 +74,7 @@ class _BookListPageState extends State<BookListPage> {
           children: [
             Text('Author: ${book['author']}'), // Nama penulis
             Text('Published Date: ${book['published_date']}'), // Tanggal publikasi
-            SizedBox(height: 10), // Spasi
+            SizedBox(height: 10), 
             Text('Categories:', style: TextStyle(fontWeight: FontWeight.bold)), // Header kategori
             ...categories.map((category) => Text('- ${category['name']}')).toList(), // List kategori
           ],

@@ -36,7 +36,7 @@ class _BorrowedBooksState extends State<BorrowedBooks> {
   void _returnBook(int bookId) async {
     await _bookController.returnBook(bookId); // Kembalikan buku ke database
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Book returned successfully!')), // Pesan sukses
+      SnackBar(content: Text('Book returned successfully!')), 
     );
     if (_selectedMemberId != null) {
       _fetchBorrowedBooks(_selectedMemberId!); // Refresh daftar buku yang dipinjam
@@ -47,16 +47,16 @@ class _BorrowedBooksState extends State<BorrowedBooks> {
   @override
   void initState() {
     super.initState();
-    _fetchMembers(); // Memuat daftar anggota
+    _fetchMembers(); 
   }
 
   // Membangun UI halaman
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Borrowed Books')), // Judul AppBar
+      appBar: AppBar(title: Text('Borrowed Books')), 
       body: Padding(
-        padding: const EdgeInsets.all(16.0), // Padding untuk keseluruhan halaman
+        padding: const EdgeInsets.all(16.0), 
         child: Column(
           children: [
             // Dropdown untuk memilih anggota
@@ -65,8 +65,8 @@ class _BorrowedBooksState extends State<BorrowedBooks> {
               hint: Text('Select a Member'), // Placeholder jika belum ada yang dipilih
               items: _members.map((member) {
                 return DropdownMenuItem<int>(
-                  value: member['id'], // ID anggota
-                  child: Text(member['name']), // Nama anggota
+                  value: member['id'], 
+                  child: Text(member['name']), 
                 );
               }).toList(),
               onChanged: (value) {
@@ -80,21 +80,21 @@ class _BorrowedBooksState extends State<BorrowedBooks> {
                 });
               },
             ),
-            SizedBox(height: 20), // Spasi antar widget
+            SizedBox(height: 20),
 
             // Daftar buku yang dipinjam
             Expanded(
               child: _borrowedBooks.isEmpty
-                  ? Center(child: Text('No borrowed books for this member.')) // Pesan jika tidak ada buku
+                  ? Center(child: Text('No borrowed books for this member.')) 
                   : ListView.builder(
                       itemCount: _borrowedBooks.length, // Jumlah buku yang dipinjam
                       itemBuilder: (context, index) {
                         final book = _borrowedBooks[index];
                         return Card(
-                          margin: EdgeInsets.symmetric(vertical: 5), // Margin antar kartu
+                          margin: EdgeInsets.symmetric(vertical: 5), 
                           child: ListTile(
-                            title: Text(book['title']), // Judul buku
-                            subtitle: Text('Author: ${book['author']}'), // Penulis buku
+                            title: Text(book['title']), 
+                            subtitle: Text('Author: ${book['author']}'), 
                             trailing: IconButton(
                               icon: Icon(Icons.undo, color: Colors.green), // Ikon tombol "Return"
                               onPressed: () => _returnBook(book['id']), // Fungsi untuk mengembalikan buku

@@ -27,7 +27,7 @@ class _BookListState extends State<BookList> {
   void _fetchBooks() async {
     final books = await _bookController.getBooks(); // Ambil daftar buku dari database
     setState(() {
-      _books = books; // Perbarui daftar buku di state
+      _books = books; 
     });
   }
 
@@ -35,7 +35,7 @@ class _BookListState extends State<BookList> {
   void _fetchSelectedCategories(int bookId) async {
     final categories = await _bookCategoryController.getCategoriesForBook(bookId);
     setState(() {
-      _selectedCategories = categories; // Perbarui daftar kategori yang dipilih
+      _selectedCategories = categories; 
     });
   }
 
